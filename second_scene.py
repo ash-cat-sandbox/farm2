@@ -17,8 +17,9 @@ class Ui_PageSecond(QMainWindow):
         self.crop_add_button = QPushButton('Add Crop')
         layout.addWidget(self.crop_add_button)
 
-        self.clear_crops_button = QPushButton('Clear Crops')
-        layout.addWidget(self.clear_crops_button)
+        self.clear_button = QPushButton('Destroy')
+        layout.addWidget(self.clear_button)
+        self.clear_button.clicked.connect(self.toggle_clear_mode)
 
         self.rectangle_drawer = None
         self.crop_add = None
@@ -37,6 +38,13 @@ class Ui_PageSecond(QMainWindow):
         self.crop_add.setCursor(QCursor(Qt.CrossCursor))
         self.crop_add.show()
         self.crop_add.setCursor(QCursor(self.crop_add.cursor_pixmap))
+
+    def toggle_clear_mode(self):
+        if not self.crop_add:
+            self.crop_add = CropAdd()
+        # Toggle the clear mode of the crop add widget
+        self.crop_add.set_clear_mode(True)
+        self.crop_add.set_create_mode(False)
         
         
     def showRectangleDrawer(self):
