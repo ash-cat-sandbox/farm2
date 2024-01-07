@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QLabel, QWidget, QPushButton, QVBoxLayout, QMainWindow, QStackedWidget
-from PyQt5.QtGui import QPainter, QColor
+from PyQt5.QtGui import QPainter, QColor, QCursor
 from PyQt5.QtCore import Qt, QRect
 import subprocess
 from rectangle_drawer import RectangleDrawer
@@ -17,6 +17,9 @@ class Ui_PageSecond(QMainWindow):
         self.crop_add_button = QPushButton('Add Crop')
         layout.addWidget(self.crop_add_button)
 
+        self.clear_crops_button = QPushButton('Clear Crops')
+        layout.addWidget(self.clear_crops_button)
+
         self.rectangle_drawer = None
         self.crop_add = None
 
@@ -31,7 +34,9 @@ class Ui_PageSecond(QMainWindow):
         print("add crop button clicked")
         if not self.crop_add:
             self.crop_add = CropAdd()
+        self.crop_add.setCursor(QCursor(Qt.CrossCursor))
         self.crop_add.show()
+        self.crop_add.setCursor(QCursor(self.crop_add.cursor_pixmap))
         
         
     def showRectangleDrawer(self):
@@ -39,6 +44,8 @@ class Ui_PageSecond(QMainWindow):
         if not self.rectangle_drawer:
             self.rectangle_drawer = RectangleDrawer()
         self.rectangle_drawer.show()
+
+    
 
     def hideEvent(self, event):
         if self.rectangle_drawer and self.rectangle_drawer.isVisible():
@@ -51,4 +58,8 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = RectangleDrawer()
     window.show()
-    sys.exit(app.exec_())'''
+    sys.exit(app.exec_())
+    
+    self.clear_crops_button = QPushButton('Clear Crops')
+        clear_crops_button.clicked.connect(lambda: widget.rectangles.clear() or widget.update())
+        layout.addWidget(self.clear_crops_button)'''
