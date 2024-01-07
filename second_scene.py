@@ -10,9 +10,6 @@ class Ui_PageSecond(QMainWindow):
         self.central_widget = QWidget()
         layout = QVBoxLayout(self.central_widget)
         
-        self.new_game_button = QPushButton('New Game')
-        layout.addWidget(self.new_game_button)
-
         self.rectangle_drawer_button = QPushButton('Open Rectangle Drawer')
         layout.addWidget(self.rectangle_drawer_button)
 
@@ -22,36 +19,17 @@ class Ui_PageSecond(QMainWindow):
 
         widget.addWidget(self)
 
-        self.new_game_button.clicked.connect(self.showRectangleDrawer)
         self.rectangle_drawer_button.clicked.connect(self.showRectangleDrawer)
-        '''self.central_widget = QWidget()
-        layout = QVBoxLayout(self.central_widget)
-
         
-        layout.addWidget(QPushButton('Exit'))
-
-        self.new_game_button = QPushButton('New Game')
-        layout.addWidget(self.new_game_button)
-
-        self.rectangle_drawer_button = QPushButton('Open Rectangle Drawer')
-        layout.addWidget(self.rectangle_drawer_button)
-
-        self.rectangle_drawer = None
-
-        widget.addWidget(self)
-
-        self.new_game_button.clicked.connect(self.showRectangleDrawer)
-        self.rectangle_drawer_button.clicked.connect(self.showRectangleDrawer)'''
-
     def showRectangleDrawer(self):
         print("Button Clicked!")
         if not self.rectangle_drawer:
             self.rectangle_drawer = RectangleDrawer()
         self.rectangle_drawer.show()
 
-    '''def hideEvent(self, event):
+    def hideEvent(self, event):
         if self.rectangle_drawer and self.rectangle_drawer.isVisible():
-            self.rectangle_drawer.close()'''
+            self.rectangle_drawer.close()
 
 
 
