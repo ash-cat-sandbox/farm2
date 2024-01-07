@@ -9,9 +9,13 @@ class Ui_PageFirst(QMainWindow):    #Page1
 
         new_game_button = QPushButton('New Game')
         new_game_button.clicked.connect(lambda: self.changeToPage2(widget))
-
+        
+        exit_game_button = QPushButton('Exit')
+        exit_game_button.clicked.connect(QApplication.quit)
+        
         layout.addWidget(new_game_button)
-        layout.addWidget(QPushButton('Exit'))
+        layout.addWidget(exit_game_button)
+
         self.setCentralWidget(central_widget)
         widget.addWidget(self)
 
